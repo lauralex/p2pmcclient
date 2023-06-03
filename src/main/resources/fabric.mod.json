@@ -1,0 +1,42 @@
+{
+	"schemaVersion": 1,
+	"id": "p2pmcclient",
+	"version": "${version}",
+	"name": "p2pmcclient",
+	"description": "P2P Minecraft Client",
+	"authors": [
+		"Alessandro Bellia"
+	],
+	"contact": {
+		"homepage": "https://github.com/lauralex/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "Apache-2.0",
+	"icon": "assets/p2pmcclient/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"org.bell.P2PMod"
+		],
+		"client": [
+			"org.bell.P2PModClient"
+		]
+	},
+	"mixins": [
+		"p2pmcclient.mixins.json",
+		{
+			"config": "p2pmcclient.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.14.20",
+		"minecraft": "~1.19.4",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	},
+	"accessWidener": "p2pmcclient.accesswidener"
+}

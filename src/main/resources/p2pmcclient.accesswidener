@@ -1,0 +1,14 @@
+accessWidener v1 named
+accessible class net/minecraft/client/gui/widget/EntryListWidget
+accessible method net/minecraft/client/gui/widget/EntryListWidget addEntry (Lnet/minecraft/client/gui/widget/EntryListWidget$Entry;)I
+accessible method net/minecraft/client/gui/widget/EntryListWidget clearEntries ()V
+accessible method net/minecraft/client/gui/screen/multiplayer/MultiplayerServerListWidget$ServerEntry <init> (Lnet/minecraft/client/gui/screen/multiplayer/MultiplayerServerListWidget;Lnet/minecraft/client/gui/screen/multiplayer/MultiplayerScreen;Lnet/minecraft/client/network/ServerInfo;)V
+mutable field net/minecraft/client/gui/screen/Screen title Lnet/minecraft/text/Text;
+mutable field net/minecraft/client/gui/screen/multiplayer/MultiplayerScreen serverList Lnet/minecraft/client/option/ServerList;
+accessible field net/minecraft/client/gui/screen/multiplayer/MultiplayerScreen serverList Lnet/minecraft/client/option/ServerList;
+mutable field net/minecraft/client/gui/screen/multiplayer/MultiplayerScreen initialized Z
+accessible field net/minecraft/client/gui/screen/multiplayer/MultiplayerScreen initialized Z
+mutable field net/minecraft/client/gui/screen/multiplayer/MultiplayerScreen serverListPinger Lnet/minecraft/client/network/MultiplayerServerListPinger;
+accessible field net/minecraft/client/gui/screen/multiplayer/MultiplayerScreen serverListPinger Lnet/minecraft/client/network/MultiplayerServerListPinger;
+mutable field net/minecraft/client/gui/screen/multiplayer/MultiplayerScreen parent Lnet/minecraft/client/gui/screen/Screen;
+accessible field net/minecraft/client/gui/screen/multiplayer/MultiplayerScreen parent Lnet/minecraft/client/gui/screen/Screen;
