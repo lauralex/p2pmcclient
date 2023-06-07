@@ -1,6 +1,7 @@
 plugins {
 	id 'fabric-loom' version '1.2-SNAPSHOT'
 	id 'maven-publish'
+	id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 version = project.mod_version
@@ -8,6 +9,12 @@ group = project.maven_group
 
 base {
 	archivesName = project.archives_base_name
+}
+
+configurations {
+	// include libraries
+	implementation.extendsFrom(library)
+	shadow.extendsFrom(library)
 }
 
 repositories {
@@ -40,10 +47,11 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	modImplementation "org.springframework:spring-web:${project.spring_version}"
-	modImplementation "com.google.code.gson:gson:${project.gson_version}"
-	modImplementation "commons-io:commons-io:${project.commons_io_version}"
-	// Uncomment the following line to enable the deprecated Fabric API modules. 
+	library "org.springframework:spring-web:${project.spring_version}"
+	library "com.google.code.gson:gson:${project.gson_version}"
+	library "commons-io:commons-io:${project.commons_io_version}"
+
+	// Uncomment the following line to enable the deprecated Fabric API modules.
 	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
 
 	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
@@ -71,10 +79,17 @@ java {
 	targetCompatibility = JavaVersion.VERSION_17
 }
 
-jar {
+shadowJar {
+	configurations = [project.configurations.shadow]
 	from("LICENSE") {
-		rename { "${it}_${project.archivesBaseName}"}
+		rename { "${it}_${project.archivesBaseName}" }
 	}
+	from sourceSets.client.output
+}
+
+remapJar {
+	dependsOn shadowJar
+	inputFile.set(shadowJar.archiveFile)
 }
 
 // configure the maven publication
