@@ -4,7 +4,7 @@ Create a P2P Minecraft system using Purpur API (for the server side) and FabricM
 
 ## Technical details
 ### Server side (Purpur plugin logic)
-Go to the following repo: https://github.com/lauralex?tab=repositories
+Go to the following repo: https://github.com/lauralex/p2pminecraft
 
 ### Client side (FabricMC mod logic)
 This mod adds a new "P2P" screen to the Multiplayer menu. It allows the user to connect to a P2P server.
