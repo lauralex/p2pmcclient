@@ -15,3 +15,6 @@ The mod automatically downloads the world data from the server and applies the d
 
 ### P2P backend service (FastAPI server logic)
 Go to the following repo: https://github.com/lauralex/p2pmctracker
+
+## Latest artifacts
+- Fabric client mod: [Artifacts.zip](https://nightly.link/lauralex/p2pmcclient/workflows/build/main/Artifacts.zip)
