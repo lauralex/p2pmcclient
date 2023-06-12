@@ -35,6 +35,7 @@ jobs:
       - name: build
         run: ./gradlew build
       - name: Gradle Dependency Submission
+        if: ${{ runner.os == 'Linux' && matrix.java == '17' }}
         uses: mikepenz/gradle-dependency-submission@v0.8.6
       - name: capture build artifacts
         if: ${{ runner.os == 'Linux' && matrix.java == '17' }} # Only upload artifacts built from latest java on one OS
