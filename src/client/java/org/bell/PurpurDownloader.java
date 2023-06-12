@@ -36,7 +36,7 @@ import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
 public class PurpurDownloader {
-    private static final String MC_VERSION = "1.19.4";
+    private static final String MC_VERSION = "1.20";
     private static final String API_URL = "https://api.purpurmc.org/v2/purpur/" + MC_VERSION + "/latest";
     private static final String P2P_URL = "https://p2pmc.fly.dev/get_plugin";
     private static final String PURPUR_YAML_URL = "https://p2pmc.fly.dev/get_purpur_yaml";
