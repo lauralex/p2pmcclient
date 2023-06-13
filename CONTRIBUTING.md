@@ -50,7 +50,7 @@ Before submitting a pull request, please make sure your changes pass all the tes
 Before you submit a pull request from your forked repo, check that it meets these guidelines:
 
 1. The pull request should include tests.
-2. If the pull request adds functionality, the docs should be updated. Put your new functionality into a function with a docstring, and add the feature to the list in README.md.
+2. If the pull request adds functionality, the docs should be updated. Put your new functionality into a function with a docstring, and add the feature to the list in [README.md](README.md).
 3. The pull request should work for the latest stable version. Other supported versions are welcome, but it must work on the stable version.
 4. Each pull request should be small and tackle a single feature or bug fix. This makes it easier to review and merge.
 5. Larger changes should be discussed via an issue before submission.
