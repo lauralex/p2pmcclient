@@ -31,8 +31,6 @@ https://github.com/lauralex/p2pmcclient/assets/5181524/2ba73218-eb34-414e-9596-f
 
 And that's it! If you followed the steps correctly, the FabricMC mod should now be installed on your Minecraft game.
 
-Please note that you need to have Java installed on your computer to run the Fabric Loader and Minecraft. If you don't have it installed, you can download it from the [Java Official Website](https://www.java.com/en/download/).
-
 These instructions are subject to change if the process for installing Fabric or the structure of your Artifacts.zip file changes. Always make sure to use the most up-to-date methods for each step.
 
 ## Technical details
