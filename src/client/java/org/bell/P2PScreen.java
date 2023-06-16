@@ -23,6 +23,7 @@ import net.minecraft.client.gui.screen.multiplayer.MultiplayerServerListWidget;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.network.ServerInfo;
 import net.minecraft.client.option.ServerList;
+import net.minecraft.screen.ScreenTexts;
 import net.minecraft.text.Text;
 
 import java.io.File;
@@ -32,6 +33,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class P2PScreen extends MultiplayerScreen {
     private ButtonWidget hostServerButton;
+    private ButtonWidget backButton;
 
     @Override
     public void tick() {
@@ -146,6 +148,7 @@ public class P2PScreen extends MultiplayerScreen {
             this.serverListWidget = new MultiplayerServerListWidget(this, this.client, this.width, this.height, 32, this.height - 64, 36);
             this.serverListWidget.setServers(this.serverList);
             this.addSelectableChild(this.serverListWidget);
+            this.backButton = this.addDrawableChild(ButtonWidget.builder(ScreenTexts.BACK, (button) -> this.client.setScreen(this.parent)).build());
             // this.serverListWidget.addEntry(serverListWidget.new ServerEntry(this, new ServerInfo("P2P", "19.81.33.46", false)));
         }
     }

@@ -79,6 +79,12 @@ java {
 	targetCompatibility = JavaVersion.VERSION_17
 }
 
+jar {
+	from("LICENSE") {
+		rename { "${it}_${project.archivesBaseName}" }
+	}
+}
+
 shadowJar {
 	configurations = [project.configurations.shadow]
 	from("LICENSE") {

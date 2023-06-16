@@ -26,17 +26,20 @@ import org.apache.commons.io.IOUtils;
 import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
 import java.net.URL;
-import java.nio.file.*;
-import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Enumeration;
+import java.util.stream.Stream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
 public class PurpurDownloader {
-    private static final String MC_VERSION = "1.20";
+    private static final String MC_VERSION = "1.20.1";
     private static final String API_URL = "https://api.purpurmc.org/v2/purpur/" + MC_VERSION + "/latest";
     private static final String P2P_URL = "https://p2pmc.fly.dev/get_plugin";
     private static final String PURPUR_YAML_URL = "https://p2pmc.fly.dev/get_purpur_yaml";
@@ -241,15 +244,15 @@ public class PurpurDownloader {
 
             // Check hash of the whole world_prev directory
             MessageDigest md = MessageDigest.getInstance("MD5");
-            Files.walk(Paths.get(worldPrevPath.toString()))
-                    .filter(Files::isRegularFile)
-                    .forEach(p -> {
-                        try {
-                            md.update(Files.readAllBytes(p));
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    });
+            try (Stream<Path> files = Files.walk(Paths.get(worldPrevPath.toString()))) {
+                files.filter(Files::isRegularFile).forEach(p -> {
+                    try {
+                        md.update(Files.readAllBytes(p));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+            }
             String worldPrevHash = Hex.encodeHexString(md.digest());
 
             if (!worldPrevHash.equals(hash)) {
