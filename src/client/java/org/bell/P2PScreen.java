@@ -20,7 +20,10 @@ import com.sun.management.OperatingSystemMXBean;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerServerListWidget;
+import net.minecraft.client.gui.widget.AxisGridWidget;
 import net.minecraft.client.gui.widget.ButtonWidget;
+import net.minecraft.client.gui.widget.GridWidget;
+import net.minecraft.client.gui.widget.SimplePositioningWidget;
 import net.minecraft.client.network.ServerInfo;
 import net.minecraft.client.option.ServerList;
 import net.minecraft.screen.ScreenTexts;
@@ -142,15 +145,28 @@ public class P2PScreen extends MultiplayerScreen {
                     }
                 }).build();
 
-                this.addDrawableChild(hostServerButton);
+
             }
 
             this.serverListWidget = new MultiplayerServerListWidget(this, this.client, this.width, this.height, 32, this.height - 64, 36);
             this.serverListWidget.setServers(this.serverList);
-            this.addSelectableChild(this.serverListWidget);
-            this.backButton = this.addDrawableChild(ButtonWidget.builder(ScreenTexts.BACK, (button) -> this.client.setScreen(this.parent)).build());
-            // this.serverListWidget.addEntry(serverListWidget.new ServerEntry(this, new ServerInfo("P2P", "19.81.33.46", false)));
         }
+
+        if (this.hostServerButton != null) {
+            this.addDrawableChild(this.hostServerButton);
+        }
+
+        this.addSelectableChild(this.serverListWidget);
+
+        this.backButton = this.addDrawableChild(ButtonWidget.builder(ScreenTexts.BACK, (button) -> this.client.setScreen(this.parent)).build());
+        GridWidget gridWidget = new GridWidget();
+        GridWidget.Adder adder = gridWidget.createAdder(1);
+        AxisGridWidget axisGridWidget = adder.add(new AxisGridWidget(308, 20, AxisGridWidget.DisplayAxis.HORIZONTAL));
+        axisGridWidget.add(this.backButton);
+
+        gridWidget.refreshPositions();
+        SimplePositioningWidget.setPos(gridWidget, 0, this.height - 64, this.width, 64);
+        // this.serverListWidget.addEntry(serverListWidget.new ServerEntry(this, new ServerInfo("P2P", "19.81.33.46", false)));
     }
 
     @Override
